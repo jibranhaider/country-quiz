@@ -91,10 +91,45 @@ print("------------------------")
 print("WELCOME TO THIS QUIZ !!!")
 print("------------------------\n")
 
-questions = int(input("Please enter the number of questions you want to play for ranging from 5 to 100: "))
+print("In this game your knowledge of countries will be tested.")
+print("The questions will be asked from the following categories including:")
+for i in categories:
+    index = categories.index(i)
+    print("(" +str(choices[index])+ ") " +i)
+
+print("\nWould you like all categories to be included?")
+check = input("Press 'y' for yes or 'n' for no: ")
+while check != "y" and check != "n":
+    check = input("Please press 'y' for yes or 'n' for no: ")
+
+
+if check == "n":
+    print("\nPlease select the relevant categories.")
+    categories_remove = []
+    options_remove = []
+
+    for i in categories:
+        index = categories.index(i)
+        print('\nWould you like ' +i+ ' to be included?')
+        check = input("Press 'y' for yes or 'n' for no: ")
+
+        while check != "y" and check != "n":
+            check = input("Please press 'y' for yes or 'n' for no: ")
+
+        if check == "n":
+            categories_remove.append(i)
+            options_remove.append(index)
+
+    for i in categories_remove:
+        categories = [x for x in categories if x != i]
+
+    options = [i for j, i in enumerate(options) if j not in options_remove]
+
+questions = int(input("\nPlease enter the number of questions you want to play for ranging from 5 to 100: "))
 
 while questions < 5 or questions > 100:
     questions = int(input("Please enter the number of questions you want to play for ranging from" "5 to 100: "))
+
 
 os.system('clear')
 
@@ -114,7 +149,7 @@ for i in range(0, questions):
     country_pool.append(countries_question[i])
     rand.shuffle(country_pool)
 
-    if  category == categories[1]:
+    if  category == "subregion":
         subregion_pool = subregions
         subregion_pool = [y for y in subregion_pool if y != country.subregion()]
         subregion_pool = rand.sample(subregion_pool, options[category_index]-1)
@@ -122,7 +157,7 @@ for i in range(0, questions):
         rand.shuffle(subregion_pool)
         index = subregion_pool.index(country.subregion())
 
-    elif category == categories[5]:
+    elif category == "currency":
         currencies_pool = currencies
         currencies_pool = [y for y in currencies_pool if y != country.currencies()[0]]
         currencies_pool = rand.sample(currencies_pool, options[category_index]-1)
@@ -138,28 +173,28 @@ for i in range(0, questions):
     for x in range(options[category_index]):
         country_choice = CountryInfo(country_pool[x])
 
-        if category == categories[0]:
+        if category == "area":
             print ('(' +choices[x]+ ') ' +str(country_choice.area())+ " sq kilometers")
 
-        elif category == categories[1]:
+        elif category == "subregion":
             print ('(' +choices[x]+ ') ' +subregion_pool[x])
 
-        elif  category == categories[2]:
+        elif  category == "calling code":
             print ('(' +choices[x]+ ') ' +str(country_choice.calling_codes()[0]))
 
-        elif  category == categories[3]:
+        elif  category == "population":
             print ('(' +choices[x]+ ') ' +str(country_choice.population()))
 
-        elif  category == categories[4]:
+        elif  category == "capital":
             print ('(' +choices[x]+ ') ' +country_choice.capital())
 
-        elif  category == categories[5]:
+        elif  category == "currency":
             print ('(' +choices[x]+ ') ' +currencies_pool[x])
 
-        elif  category == categories[6]:
+        elif  category == "latitude":
             print ('(' +choices[x]+ ') ' +str(country_choice.latlng()[0]))
 
-        elif  category == categories[7]:
+        elif  category == "longitude":
             print ('(' +choices[x]+ ') ' +str(country_choice.latlng()[1]))
 
     answer_user = input("\nPlease choose an option: ")
@@ -173,28 +208,28 @@ for i in range(0, questions):
         print("\nWrong answer !!!")
 
 
-    if  category == categories[0]:
+    if  category == "area":
         print("The " +category+ " of " +countries_question[i]+ " is " +str(country.area())+ " square kilometers.")
 
-    elif category == categories[1]:
+    elif category == "subregion":
         print("The " +category+ " of " +countries_question[i]+ " is " +str(country.subregion())+ ".")
 
-    elif category == categories[2]:
+    elif category == "calling code":
         print("The " +category+ " of " +countries_question[i]+ " is " +str(country.calling_codes()[0])+ ".")
 
-    elif category == categories[3]:
+    elif category == "population":
         print("The " +category+ " of " +countries_question[i]+ " is " +str(country.population())+ ".")
 
-    elif category == categories[4]:
+    elif category == "capital":
         print("The " +category+ " of " +countries_question[i]+ " is " +str(country.capital())+ ".")
 
-    elif category == categories[5]:
+    elif category == "currency":
         print("The " +category+ " of " +countries_question[i]+ " is " +str(country.currencies()[0])+ ".")
 
-    elif category == categories[6]:
+    elif category == "latitude":
         print("The " +category+ " of " +countries_question[i]+ " is " +str(country.latlng()[0])+ ".")
 
-    elif category == categories[7]:
+    elif category == "longitude":
         print("The " +category+ " of " +countries_question[i]+ " is " +str(country.latlng()[1])+ ".")
 
     percentage = score/(i+1)*100
