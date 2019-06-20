@@ -1,6 +1,6 @@
 <hr>
 
-<h1><p align="center"> A Country Quiz Program
+<h1><p align="center"> Country Quiz Program
 </p></h1>
 
 <br/>
@@ -30,13 +30,13 @@ python3 quiz.py
 <br/>
 <hr>
 
-## 5. Author
+## 3. Author
 This program is developed by [Jibran Haider](http://jibranhaider.weebly.com/).
 
 <br/>
 <hr>
 
-## 3. Acknowledgement
+## 4. Acknowledgement
 
 I would like to acknowledge the developer of the [countryinfo](https://github.com/porimol/countryinfo) repository which serves as the database for this quiz program.
 
@@ -44,5 +44,5 @@ I would like to acknowledge the developer of the [countryinfo](https://github.co
 <br/>
 <hr>
 
-## 4. License
+## 5. License
 This program is released under the MIT License. More details can be found in the [LICENSE](LICENSE) file.
