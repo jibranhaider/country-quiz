@@ -8,7 +8,7 @@
 ## 1. Introduction
 
 <p align="justify">
-A simple quiz program based on multiple choice questions. It is written using python version 3 and it makes use of the countryinfo python module to access country database.
+A simple quiz program based on multiple choice questions.
 </p>
 
 
@@ -19,10 +19,15 @@ A simple quiz program based on multiple choice questions. It is written using py
 
 This quiz program is written using python version 3. It can be obtained by cloning the repository.
 ```
-git clone https://github.com/jibranhaider/country-info
+git clone https://github.com/jibranhaider/country-quiz
 ```
 
-The program can then be executed by running the pyhton script inside the cloned directory.
+It makes use of the [countryinfo](https://github.com/porimol/countryinfo) python module to access country database which can be installed using *pip*
+```
+pip install countryinfo
+```
+
+The program can then be executed by running the python script inside the cloned directory.
 ```
 python3 quiz.py
 ```
@@ -31,7 +36,7 @@ python3 quiz.py
 <hr>
 
 ## 3. Author
-This program is developed by [Jibran Haider](http://jibranhaider.weebly.com/).
+This program is developed by [Jibran Haider](http://jibranhaider.com/).
 
 <br/>
 <hr>
